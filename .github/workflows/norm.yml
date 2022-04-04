@@ -1,0 +1,18 @@
+name: Norminette
+
+on: [pull_request, workflow_dispatch]
+
+jobs:
+  Norminette:
+    runs-on: ubuntu-latest
+steps:
+  - name: checkout git repository
+    uses: actions/checkout@v2
+
+  - name: Install Norminette
+    run: |
+      python3 -m pip install --upgrade pip setuptools
+      python3 -m pip install norminette
+
+  - name: Run Norminette
+    run: norminette $(find . -type d -name test -prune -o -type f -regextype posix-basic -regex ".*\.\(c\|h\)" -print)
