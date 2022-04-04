@@ -7,21 +7,18 @@ As beautiful as a shell.
 - [Minishell](#minishell)
   - [contents](#contents)
   - [Execution environment](#execution-environment)
+  - [Memory leak check (docker)](#memory-leak-check-docker)
   - [Material](#material)
 
 ## Execution environment
-<!-- 
+
 ```shell
-Mac OS :Big Sur
+Mac OS: Monterey
 $clang -v
-Apple clang version 12.0.0 (clang-1200.0.32.28)
-Target: x86_64-apple-darwin20.2.0
+Apple clang version 13.1.6 (clang-1316.0.21.2)
+Target: x86_64-apple-darwin21.3.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-
-$zsh --version
-zsh --version
-zsh 5.8 (x86_64-apple-darwin20.0)
 
 $bash --version
 bash --version
@@ -29,7 +26,14 @@ GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin20)
 Copyright (C) 2007 Free Software Foundation, Inc.
 ```
 
-Implementation environment was adapted to bash. -->
+Implementation environment was adapted to bash.
+
+## Memory leak check (docker)
+
+```shell
+docker build -t <specific_name> .
+docker run -it --rm -v $PWD:/code <specific_name> make valgrind
+```
 
 ## Material
 
